@@ -37,15 +37,20 @@
     [self.view addSubview:_submit];
     [self.view addSubview:_cancel];
 }
+
+// submit:和cancel:方法中有重复的代码,  这是一件是忌讳的事情
+// 今天在京东面试的时候超级nice的面试官刚好出了一个这样的题目
+// 在界面中有多个button. 点击任何一个都可以文本框的第一相应
+// 面试官提示用UIControl中的方法
 -(void) submit:(UIButton *)sender {
     [_delegate editView:self Info:_text.text];
-    [_text resignFirstResponder];
-    NSLog(@"SUB");
+    [_text resignFirstResponder];    //有待修改
 }
 -(void) cancel:(UIButton *)sender  {
-     [_delegate editCancel:self];
-     [_text resignFirstResponder];
+    [_delegate editCancel:self];
+    [_text resignFirstResponder];   //有待修改
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
